@@ -32,6 +32,13 @@
             color: var(--dark-sage);
         }
 
+        h1 {
+            font-size: 2.875rem; /* 15% increase */
+        }
+        h2 {
+            font-size: 1.725rem; /* 15% increase */
+        }
+        
         a {
             color: var(--dark-sage);
             text-decoration: none;
@@ -111,8 +118,9 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center;
+            align-items: flex-end; /* Align right */
             gap: 2rem;
+            padding-right: 2rem;
             transition: right 0.5s ease-in-out;
             box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
             z-index: 999;
@@ -123,8 +131,8 @@
         }
 
         nav a {
-            font-size: 1.5rem;
-            font-weight: 700;
+            font-size: 1.275rem; /* 15% reduction */
+            font-weight: 600; /* 15% reduction in boldness */
             color: var(--dark-sage);
             transition: transform 0.3s ease;
         }
@@ -143,19 +151,15 @@
                 background: none;
                 flex-direction: row;
                 justify-content: flex-end;
+                align-items: center;
                 box-shadow: none;
                 transition: none;
+                padding-right: 0;
             }
         }
 
         /* Hero Section */
         #hero {
-            /* Note: The Google Drive link you provided is not a direct image URL. */
-            /* You will need to get a direct link for the image to display here. */
-            /* A temporary placeholder is used below. */
-            background-image: url('https://i.ibb.co/wrKDsMsT/IMG-2213.jpg');
-            background-size: cover;
-            background-position: center;
             height: 80vh;
             display: flex;
             justify-content: center;
@@ -168,6 +172,20 @@
             border-bottom-right-radius: 50px;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
             margin-bottom: 2rem;
+            overflow: hidden;
+        }
+
+        #hero video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            filter: brightness(1.1) contrast(1.1); /* 10% increase */
         }
 
         #hero::after {
@@ -182,17 +200,16 @@
         }
 
         #hero h1 {
-            font-size: 2.5rem;
+            font-size: 2.875rem;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
             z-index: 2;
             color: white;
             animation: scaleIn 1s ease-out;
             max-width: 90%;
-            
         }
 
         @media (min-width: 768px) {
-            #hero h1 { font-size: 4rem; }
+            #hero h1 { font-size: 4.6rem; } /* 15% increase */
         }
 
         /* Gallery Section */
@@ -234,7 +251,7 @@
         .gallery-item img {
             width: 100%;
             height: 200px;
-            object-fit: cover;
+            object-fit: contain; /* Changed to contain to show full image */
             border-radius: 10px;
             margin-bottom: 0.5rem;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -387,6 +404,27 @@
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
         }
 
+        .feedback-image-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 2rem auto;
+            max-width: 300px;
+        }
+
+        .feedback-image-container img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .feedback-image-container .caption {
+            margin-top: 1rem;
+            font-style: italic;
+            color: var(--dark-sage);
+        }
+
+
         footer {
             text-align: center;
             padding: 2rem 1rem;
@@ -437,6 +475,7 @@
     </header>
 
     <section id="hero">
+        <video src="https://streamable.com/e/8ix0da?nocontrols=1" autoplay loop muted playsinline></video>
         <h1>Hello there, curious traveler!</h1>
     </section>
 
@@ -510,6 +549,10 @@
         <div class="container">
             <h2>Got Feedback?</h2>
             <p>Please, leave us some feedback. We desperately need it.</p>
+            <div class="feedback-image-container">
+                <img src="https://i.ibb.co/hJ9Krs8j/IMG-0795.jpg" alt="A photo of the website's creator and his partner">
+                <p class="caption">thank you for using the facilities</p>
+            </div>
             <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="feedback-button">Leave Feedback</a>
         </div>
     </section>
