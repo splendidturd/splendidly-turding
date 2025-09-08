@@ -57,7 +57,8 @@
         }
 
         section {
-            padding: 2rem 1rem;
+            /* CHANGE 1: Adjusted padding for even spacing between sections */
+            padding: 4rem 1rem;
             position: relative;
             overflow: hidden;
         }
@@ -171,9 +172,12 @@
             border-bottom-left-radius: 50px;
             border-bottom-right-radius: 50px;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-            margin-bottom: 1rem;
             overflow: hidden;
-            background-color: #D5FFFF; /* Fallback for video */
+            /* CHANGE 2: Removed top padding to eliminate gap with header */
+            padding-top: 0;
+            padding-bottom: 4rem; /* Keep bottom padding consistent */
+            /* CHANGE 3: Changed fallback color to match the theme */
+            background-color: var(--pastel-sage);
         }
 
         #hero-video-container {
@@ -226,7 +230,6 @@
         #gallery {
             background-color: var(--pastel-sage);
             border-radius: 25px;
-            margin: 1rem 0;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
@@ -285,7 +288,6 @@
         #about {
             background-color: var(--powder-pink);
             border-radius: 25px;
-            margin: 1rem 0;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
@@ -328,11 +330,36 @@
             display: block;
         }
 
+        /* CHANGE 5: New Video Feature Section Styles */
+        #video-feature {
+            background-color: var(--powder-pink);
+            text-align: center;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 177.77%; /* 9:16 Aspect Ratio for Shorts */
+            height: 0;
+            overflow: hidden;
+            max-width: 360px; /* Control max width for larger screens */
+            margin: 2rem auto;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        /* End of New Section Styles */
+
         /* News Section */
         #news {
             background-color: var(--pastel-sage);
             border-radius: 25px;
-            margin: 1rem 0;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
         
@@ -393,7 +420,6 @@
         /* Leave Feedback & Footer */
         #feedback {
             text-align: center;
-            padding: 2rem 1rem;
         }
         
         .feedback-button {
@@ -434,14 +460,14 @@
             color: var(--dark-sage);
         }
 
-
         footer {
             text-align: center;
-            padding: 1rem 1rem;
-            font-size: 0.8rem;
-            color: var(--dark-sage);
-            opacity: 0.6;
+            padding: 2rem 1rem; /* Increased padding */
+            font-size: 0.9rem; /* Increased font size */
             animation: slideInFromBottom 1s ease-out;
+            /* CHANGE 4: Contrasting footer color */
+            background-color: var(--dark-sage);
+            color: var(--powder-pink);
         }
 
         /* Animations */
@@ -479,6 +505,7 @@
         <nav>
             <a href="#gallery">memes</a>
             <a href="#about">wtf is this?</a>
+            <a href="#video-feature">a short film</a>
             <a href="#news">news</a>
             <a href="#feedback">leave feedback</a>
         </nav>
@@ -530,6 +557,22 @@
                 <h3>What to do now</h3>
                 <p>Now that you're here, feel free to scroll our news articles, check out our memes, and please desperately leave us feedback.</p>
                 <a href="#feedback" class="feedback-button" style="display: block; width: fit-content; margin: 1rem auto; padding: 0.5rem 1rem; font-size: 1rem;">Go to Feedback</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="video-feature">
+        <div class="container">
+            <h2>A Short Film</h2>
+            <p>For your viewing pleasure, a moment of cinematic brilliance.</p>
+            <div class="video-wrapper">
+                <iframe 
+                    src="https://www.youtube.com/embed/20A0qRo8aLM" 
+                    title="YouTube video player" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
             </div>
         </div>
     </section>
