@@ -8,23 +8,21 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* SYNTHWAVE THEME - COLOR PALETTE */
+        /* ELEGANT SYNTHWAVE THEME - COLOR PALETTE */
         :root {
-            --background-dark: #0d0221; /* Deep space blue/purple */
-            --primary-pink: #ff33cc;    /* Vibrant Pink */
-            --primary-cyan: #00e5ff;    /* Bright Cyan */
-            --secondary-purple: #9d37f7;/* Electric Purple */
-            --text-light: #f5f5f5;
-            --glow-pink: rgba(255, 51, 204, 0.7);
-            --glow-cyan: rgba(0, 229, 255, 0.7);
-            --glow-purple: rgba(157, 55, 247, 0.6);
+            --background: #2c2a4a;      /* Soft, dark navy-purple */
+            --surface: #4f4a72;         /* Muted purple for cards and sections */
+            --primary: #e85aa1;         /* Softer, vibrant magenta */
+            --secondary: #64d8cb;       /* Pastel teal/cyan */
+            --text-primary: #e6e0ff;    /* Light lavender-white */
+            --text-secondary: #b4a8e0;  /* Muted lavender for subtitles */
         }
 
         /* General Body and Typography */
         body {
             font-family: 'Inter', sans-serif;
-            background-color: var(--background-dark);
-            color: var(--text-light);
+            background-color: var(--background);
+            color: var(--text-primary);
             line-height: 1.6;
             margin: 0;
             overflow-x: hidden;
@@ -33,26 +31,20 @@
 
         h1, h2, h3 {
             font-weight: 700;
-            color: var(--primary-cyan);
-            text-shadow: 0 0 5px var(--glow-cyan);
+            color: var(--secondary);
         }
 
-        h1 {
-            font-size: 2.875rem;
-        }
-        h2 {
-            font-size: 1.725rem;
-        }
+        h1 { font-size: 2.875rem; }
+        h2 { font-size: 1.725rem; }
         
         a {
-            color: var(--primary-cyan);
+            color: var(--secondary);
             text-decoration: none;
-            transition: color 0.3s ease, text-shadow 0.3s ease;
+            transition: color 0.3s ease;
         }
 
         a:hover {
-            color: var(--primary-pink);
-            text-shadow: 0 0 6px var(--glow-pink);
+            color: var(--primary);
         }
 
         /* Container and Layout */
@@ -66,11 +58,6 @@
             padding: 4rem 1rem;
             position: relative;
             overflow: hidden;
-            border-bottom: 1px solid var(--secondary-purple);
-        }
-
-        section:last-of-type {
-            border-bottom: none;
         }
         
         /* Header and Navigation */
@@ -79,13 +66,12 @@
             justify-content: space-between;
             align-items: center;
             padding: 1rem;
-            background: rgba(13, 2, 33, 0.6);
+            background: rgba(79, 74, 114, 0.7); /* Using surface color with transparency */
             backdrop-filter: blur(10px);
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 20px var(--glow-purple);
-            border-bottom: 1px solid var(--secondary-purple);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
             border-bottom-left-radius: 15px;
             border-bottom-right-radius: 15px;
             animation: slideInFromTop 1s ease-out;
@@ -94,20 +80,61 @@
         .logo {
             font-size: 1.5rem;
             font-weight: 700;
-            color: var(--primary-pink);
-            text-shadow: 0 0 5px var(--glow-pink);
+            color: var(--primary);
             letter-spacing: -1px;
         }
 
-        .hamburger span {
-            background-color: var(--text-light);
-            box-shadow: 0 0 3px var(--glow-pink);
+        .hamburger {
+            display: block;
+            cursor: pointer;
+            z-index: 1001;
+            padding: 10px;
         }
 
-        nav {
-            background: rgba(13, 2, 33, 0.9);
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-primary);
+            margin: 5px 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            border-radius: 2px;
         }
         
+        .hamburger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+        .hamburger.open span:nth-child(2) { opacity: 0; }
+        .hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+        nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 70%;
+            height: 100vh;
+            background: rgba(44, 42, 74, 0.9); /* Darker background color for contrast */
+            backdrop-filter: blur(15px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-end;
+            gap: 2rem;
+            padding-right: 2rem;
+            transition: right 0.5s ease-in-out;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            z-index: 999;
+        }
+
+        nav.open { right: 0; }
+        
+        @media (min-width: 768px) {
+            .hamburger { display: none; }
+            nav {
+                position: static; width: auto; height: auto; background: none;
+                flex-direction: row; justify-content: flex-end; align-items: center;
+                box-shadow: none; transition: none; padding-right: 0;
+            }
+        }
+
         /* Hero Section */
         #hero {
             height: 80vh;
@@ -118,244 +145,152 @@
             color: white;
             position: relative;
             animation: fadeIn 2s ease-in;
-            border-radius: 0;
-            box-shadow: none;
+            border-bottom-left-radius: 50px;
+            border-bottom-right-radius: 50px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
             padding-top: 0;
             padding-bottom: 4rem;
-            background-color: transparent;
-            border-bottom: 2px solid var(--primary-pink);
+            background-color: var(--surface);
         }
 
         #hero-video-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            overflow: hidden;
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; overflow: hidden;
         }
 
         #hero-video-container iframe {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            transform: translate(-50%, -50%);
+            position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%;
+            width: auto; height: auto; transform: translate(-50%, -50%);
         }
 
         #hero::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, rgba(255, 51, 204, 0.3), rgba(0, 229, 255, 0.3));
-            filter: brightness(1.1) contrast(1.1);
-            z-index: 1;
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.3); z-index: 1;
         }
 
         #hero h1 {
-            font-size: 2.875rem;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
-            z-index: 2;
-            color: white;
-            animation: scaleIn 1s ease-out;
-            max-width: 90%;
+            font-size: 2.875rem; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); z-index: 2;
+            color: white; animation: scaleIn 1s ease-out; max-width: 90%;
         }
 
         @media (min-width: 768px) {
             #hero h1 { font-size: 4.6rem; }
         }
 
-        /* Generic Card Style for Content Items */
-        .card {
-            background: rgba(157, 55, 247, 0.1);
-            border: 1px solid var(--secondary-purple);
-            border-radius: 15px;
-            box-shadow: inset 0 0 15px var(--glow-purple);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        /* Re-introducing the elegant section styling */
+        #gallery, #about, #news, #video-feature {
+            background-color: var(--surface);
+            border-radius: 25px;
+            margin: 1rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
-        .card:hover {
-            box-shadow: inset 0 0 15px var(--glow-purple), 0 0 15px var(--glow-pink);
-            transform: translateY(-5px);
+        
+        p {
+            color: var(--text-secondary);
         }
 
         /* Gallery Section */
-        #gallery { background-color: transparent; border-radius: 0; box-shadow: none; }
-
         .carousel-container {
-            display: flex;
-            overflow-x: auto;
-            scroll-behavior: smooth;
-            -webkit-overflow-scrolling: touch;
-            padding: 1rem 0;
-            gap: 1rem;
-            scroll-snap-type: x mandatory;
+            display: flex; overflow-x: auto; scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch; padding: 1rem 0; gap: 1rem; scroll-snap-type: x mandatory;
         }
 
         .gallery-item {
-            flex: 0 0 80%;
-            scroll-snap-align: start;
-            padding: 1rem;
-            cursor: pointer;
+            flex: 0 0 80%; scroll-snap-align: start; display: flex; flex-direction: column;
+            align-items: center; transition: transform 0.3s ease; cursor: pointer;
+            background: rgba(255, 255, 255, 0.05); border-radius: 15px; padding: 1rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .gallery-item:hover { transform: translateY(-10px) scale(1.03); }
+        .gallery-item img {
+            width: 100%; height: 200px; object-fit: contain;
+            border-radius: 10px; margin-bottom: 0.5rem;
         }
 
-        .gallery-item img {
-            width: 100%;
-            height: 200px;
-            object-fit: contain;
-            border-radius: 10px;
-            margin-bottom: 0.5rem;
-        }
-        
         @media (min-width: 768px) {
-            .gallery-item {
-                flex: 0 0 30%;
-                scroll-snap-align: center;
-            }
+            .gallery-item { flex: 0 0 30%; scroll-snap-align: center; }
         }
 
         /* About Section (Tabs) */
-        #about { background-color: transparent; border-radius: 0; box-shadow: none; }
-
         .tabs {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 2rem;
+            display: flex; justify-content: center; flex-wrap: wrap;
+            gap: 0.5rem; margin-bottom: 2rem;
         }
 
         .tab-button {
-            padding: 0.8rem 1.5rem;
-            border-radius: 50px;
-            background: transparent;
-            color: var(--primary-cyan);
-            border: 2px solid var(--primary-cyan);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 700;
-            box-shadow: 0 0 5px var(--glow-cyan);
+            padding: 0.8rem 1.5rem; border-radius: 50px; background: rgba(44, 42, 74, 0.8);
+            color: var(--text-primary); cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            font-weight: 700; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center; border: none;
         }
 
         .tab-button.active, .tab-button:hover {
-            background-color: var(--primary-pink);
-            color: var(--background-dark);
-            border-color: var(--primary-pink);
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 0 15px var(--glow-pink);
+            background-color: var(--primary); color: white; transform: translateY(-5px);
         }
 
         .tab-content-item {
-            display: none;
-            padding: 1rem;
-            animation: fadeIn 0.8s ease-in;
+            display: none; padding: 1rem; animation: fadeIn 0.8s ease-in;
+            background: rgba(255, 255, 255, 0.05); border-radius: 15px;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
         }
         .tab-content-item.active { display: block; }
-        .tab-content-item p { color: var(--text-light); opacity: 0.9; }
-
+        
         /* Video Feature Section */
         #video-feature { text-align: center; }
         .video-wrapper {
-            position: relative;
-            padding-bottom: 177.77%; /* 9:16 Aspect Ratio */
-            height: 0;
-            overflow: hidden;
-            max-width: 360px;
-            margin: 2rem auto;
-            border-radius: 15px;
-            border: 1px solid var(--primary-pink);
-            box-shadow: 0 0 20px var(--glow-pink);
+            position: relative; padding-bottom: 177.77%; height: 0; overflow: hidden;
+            max-width: 360px; margin: 2rem auto; border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
         .video-wrapper iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
         }
 
         /* News Section */
-        #news { background-color: transparent; border-radius: 0; box-shadow: none; }
         .news-grid { display: grid; gap: 2rem; }
         .news-item {
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            cursor: pointer;
+            background: rgba(255, 255, 255, 0.05); border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); overflow: hidden;
+            transition: transform 0.3s ease; display: flex; flex-direction: column; cursor: pointer;
         }
-        .news-link {
-            display: flex;
-            flex-direction: column;
-            text-decoration: none;
-            color: var(--text-light);
-        }
-        .news-item-content {
-            padding: 1rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        .news-item img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
+        .news-item:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); }
+        .news-link { display: flex; flex-direction: column; text-decoration: none; color: var(--text-primary); }
+        .news-item-content { padding: 1rem; display: flex; flex-direction: column; justify-content: center; }
+        .news-item img { width: 100%; height: 200px; object-fit: cover; }
         @media (min-width: 768px) {
             .news-link { flex-direction: row; }
             .news-item img { width: 40%; height: auto; }
             .news-item-content { width: 60%; }
         }
         
-        /* Leave Feedback */
+        /* Leave Feedback & Footer */
         #feedback { text-align: center; }
         .feedback-button {
-            display: inline-block;
-            padding: 1rem 3rem;
-            background: var(--primary-cyan);
-            color: var(--background-dark);
-            font-size: 1.2rem;
-            font-weight: 700;
-            border-radius: 50px;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 15px var(--glow-cyan);
-            border: none;
+            display: inline-block; padding: 1rem 3rem; background: var(--secondary);
+            color: var(--background); font-size: 1.2rem; font-weight: 700; border-radius: 50px;
+            transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); border: none;
         }
         .feedback-button:hover {
-            transform: translateY(-5px) scale(1.05);
-            background: var(--primary-pink);
-            box-shadow: 0 0 25px var(--glow-pink);
+            transform: translateY(-5px); background: var(--primary); color: white;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
         }
         .feedback-image-container {
-            margin: 2rem auto;
-            max-width: 300px;
+            display: flex; flex-direction: column; align-items: center;
+            margin: 2rem auto; max-width: 300px;
         }
         .feedback-image-container img {
-            width: 100%;
-            border-radius: 15px;
-            border: 1px solid var(--secondary-purple);
-            box-shadow: 0 5px 15px var(--glow-purple);
+            width: 100%; border-radius: 15px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
         .feedback-image-container .caption {
-            margin-top: 1rem;
-            font-style: italic;
-            color: var(--primary-cyan);
+            margin-top: 1rem; font-style: italic; color: var(--secondary);
         }
 
-        /* Footer */
         footer {
-            text-align: center;
-            padding: 2rem 1rem;
-            font-size: 0.9rem;
-            animation: slideInFromBottom 1s ease-out;
-            background-color: transparent;
-            color: var(--secondary-purple);
-            border-top: 1px solid var(--secondary-purple);
+            text-align: center; padding: 2rem 1rem; font-size: 0.9rem;
+            animation: slideInFromBottom 1s ease-out; background-color: var(--surface);
+            color: var(--text-secondary);
         }
 
         /* Animations */
@@ -363,11 +298,6 @@
         @keyframes slideInFromTop { from { transform: translateY(-100%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
         @keyframes slideInFromBottom { from { transform: translateY(100%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
         @keyframes scaleIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-
-        /* Inherit card styles for specific elements */
-        .gallery-item, .tab-content-item, .news-item {
-           position: relative;
-        }
     </style>
 </head>
 <body>
@@ -383,101 +313,103 @@
         </nav>
     </header>
 
-    <section id="hero">
-        <div id="hero-video-container">
-            <iframe allow="fullscreen;autoplay" allowfullscreen src="https://streamable.com/e/8ix0da?autoplay=1&nocontrols=1" style="border:none;"></iframe>
-        </div>
-        <h1>Hello there</h1>
-    </section>
+    <main>
+        <section id="hero">
+            <div id="hero-video-container">
+                <iframe allow="fullscreen;autoplay" allowfullscreen src="https://streamable.com/e/8ix0da?autoplay=1&nocontrols=1" style="border:none;"></iframe>
+            </div>
+            <h1>Hello there</h1>
+        </section>
 
-    <section id="gallery">
-        <div class="container">
-            <h2>Gallery of Memes</h2>
-            <p>Memes curated to amuse and to be (re)stolen.</p>
-            <div class="carousel-container">
-                <div class="gallery-item card">
-                    <img src="https://i.pinimg.com/236x/3f/51/c6/3f51c62590c4667186fc048765a1548a.jpg" alt="A dog in a McDonald's uniform">
-                </div>
-                <div class="gallery-item card">
-                    <img src="https://images3.memedroid.com/images/UPLOADED260/5e071a2ea3305.jpeg" alt="A cat wearing a wizard hat">
-                </div>
-                <div class="gallery-item card">
-                    <img src="https://i.imgflip.com/4evkhv.jpg" alt="A cat smiling warmly">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="about">
-        <div class="container">
-            <h2>What Am I Looking At?</h2>
-            <div class="tabs">
-                <div class="tab-button active" data-tab="what">What is this?</div>
-                <div class="tab-button" data-tab="why">Why is this?</div>
-                <div class="tab-button" data-tab="what_now">What to do now</div>
-            </div>
-            
-            <div id="what-content" class="tab-content-item active card">
-                <h3>What is this?</h3>
-                <p>This is a place for the curious to go when they are spending a penny or taking a dump. You have found a little slice of internet oddity designed to make your brief moment of quiet contemplation a little more interesting.</p>
-            </div>
-            <div id="why-content" class="tab-content-item card">
-                <h3>Why is this?</h3>
-                <p>You have a curious nature, surely I must sate that as your host. There is no grand reason, no hidden meaning, just a simple desire to provide a moment of harmless distraction for those who seek it in this most intimate of settings.</p>
-            </div>
-            <div id="what_now-content" class="tab-content-item card">
-                <h3>What to do now</h3>
-                <p>Now that you're here, feel free to scroll our news articles, check out our memes, and please desperately leave us feedback.</p>
-                <a href="#feedback" class="feedback-button" style="display: block; width: fit-content; margin: 1rem auto; padding: 0.5rem 1rem; font-size: 1rem;">Go to Feedback</a>
-            </div>
-        </div>
-    </section>
-
-    <section id="video-feature">
-        <div class="container">
-            <h2>A Short Film</h2>
-            <p>For your viewing pleasure, a moment of cinematic brilliance.</p>
-            <div class="video-wrapper">
-                <iframe 
-                    src="https://www.youtube.com/embed/20A0qRo8aLM" 
-                    title="YouTube video player" 
-                    frameborder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
-                </iframe>
-            </div>
-        </div>
-    </section>
-
-    <section id="news">
-        <div class="container">
-            <h2>Latest News</h2>
-            <div class="news-grid">
-                <div class="news-item card">
-                    <a href="https://www.aljazeera.com/tag/gaza/" class="news-link">
-                        <img src="https://plus.unsplash.com/premium_photo-1707080369554-359143c6aa0b?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE2fHx8ZW58MHx8fHx8" alt="news image">
-                        <div class="news-item-content">
-                            <h3>News Important to Bobby and Malu</h3>
-                            <p>For a sitting that requires a more in-depth read, please click to <a href="https://www.aljazeera.com/tag/gaza/">open a news page important to us</a>.</p>
-                        </div>
-                    </a>
+        <section id="gallery">
+            <div class="container">
+                <h2>Gallery of Memes</h2>
+                <p>Memes curated to amuse and to be (re)stolen.</p>
+                <div class="carousel-container">
+                    <div class="gallery-item">
+                        <img src="https://i.pinimg.com/236x/3f/51/c6/3f51c62590c4667186fc048765a1548a.jpg" alt="A dog in a McDonald's uniform">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images3.memedroid.com/images/UPLOADED260/5e071a2ea3305.jpeg" alt="A cat wearing a wizard hat">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://i.imgflip.com/4evkhv.jpg" alt="A cat smiling warmly">
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="feedback">
-        <div class="container">
-            <h2>Got Feedback?</h2>
-            <p>Please, leave us some feedback. We desperately need it.</p>
-            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="feedback-button">Leave Feedback</a>
-            <div class="feedback-image-container">
-                <img src="https://i.ibb.co/hJ9Krs8j/IMG-0795.jpg" alt="A photo of the website's creator and his partner">
-                <p class="caption">thank you for using the facilities</p>
+        <section id="about">
+            <div class="container">
+                <h2>What Am I Looking At?</h2>
+                <div class="tabs">
+                    <div class="tab-button active" data-tab="what">What is this?</div>
+                    <div class="tab-button" data-tab="why">Why is this?</div>
+                    <div class="tab-button" data-tab="what_now">What to do now</div>
+                </div>
+                
+                <div id="what-content" class="tab-content-item active">
+                    <h3>What is this?</h3>
+                    <p>This is a place for the curious to go when they are spending a penny or taking a dump. You have found a little slice of internet oddity designed to make your brief moment of quiet contemplation a little more interesting.</p>
+                </div>
+                <div id="why-content" class="tab-content-item">
+                    <h3>Why is this?</h3>
+                    <p>You have a curious nature, surely I must sate that as your host. There is no grand reason, no hidden meaning, just a simple desire to provide a moment of harmless distraction for those who seek it in this most intimate of settings.</p>
+                </div>
+                <div id="what_now-content" class="tab-content-item">
+                    <h3>What to do now</h3>
+                    <p>Now that you're here, feel free to scroll our news articles, check out our memes, and please desperately leave us feedback.</p>
+                    <a href="#feedback" class="feedback-button" style="display: block; width: fit-content; margin: 1rem auto; padding: 0.5rem 1rem; font-size: 1rem;">Go to Feedback</a>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
+        <section id="video-feature">
+            <div class="container">
+                <h2>A Short Film</h2>
+                <p>For your viewing pleasure, a moment of cinematic brilliance.</p>
+                <div class="video-wrapper">
+                    <iframe 
+                        src="https://www.youtube.com/embed/20A0qRo8aLM" 
+                        title="YouTube video player" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+        </section>
+
+        <section id="news">
+            <div class="container">
+                <h2>Latest News</h2>
+                <div class="news-grid">
+                    <div class="news-item">
+                        <a href="https://www.aljazeera.com/tag/gaza/" class="news-link">
+                            <img src="https://plus.unsplash.com/premium_photo-1707080369554-359143c6aa0b?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE2fHx8ZW58MHx8fHx8" alt="news image">
+                            <div class="news-item-content">
+                                <h3>News Important to Bobby and Malu</h3>
+                                <p>For a sitting that requires a more in-depth read, please click to <a href="https://www.aljazeera.com/tag/gaza/">open a news page important to us</a>.</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="feedback">
+            <div class="container">
+                <h2>Got Feedback?</h2>
+                <p>Please, leave us some feedback. We desperately need it.</p>
+                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="feedback-button">Leave Feedback</a>
+                <div class="feedback-image-container">
+                    <img src="https://i.ibb.co/hJ9Krs8j/IMG-0795.jpg" alt="A photo of the website's creator and his partner">
+                    <p class="caption">thank you for using the facilities</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    
     <footer>
         <div class="container">
             <p>&copy; 2024 Splendidly Turding. All rights reserved. Do not attempt to use this website in zero gravity conditions.</p>
@@ -515,13 +447,6 @@
                         targetContent.classList.add('active');
                     }
                 });
-            });
-
-            // Re-apply the .card class to elements that need it
-            document.querySelectorAll('.gallery-item, .tab-content-item, .news-item').forEach(el => {
-                if (!el.classList.contains('card')) {
-                    el.classList.add('card');
-                }
             });
         });
     </script>
