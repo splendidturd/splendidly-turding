@@ -299,6 +299,70 @@
         @keyframes slideInFromTop { from { transform: translateY(-100%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
         @keyframes slideInFromBottom { from { transform: translateY(100%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
         @keyframes scaleIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        
+        /* Fake Form Styling */
+        .fake-form {
+            max-width: 600px;
+            margin: 0 auto 2rem auto; /* Add space between form and button */
+            text-align: left;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-on-light);
+            font-weight: 700;
+        }
+
+        .fake-form input[type="text"],
+        .fake-form textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            background-color: rgba(27, 67, 50, 0.1); /* Subtle dark green */
+            border: 2px solid var(--secondary);
+            border-radius: 8px;
+            color: var(--text-on-light);
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            box-sizing: border-box; /* Important for consistent sizing */
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .fake-form input[type="text"]:focus,
+        .fake-form textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 8px rgba(192, 160, 98, 0.5);
+        }
+
+        /* Star Rating */
+        .star-rating {
+            display: flex;
+            flex-direction: row-reverse; /* This is key for the hover effect */
+            justify-content: center;
+        }
+
+        .star-rating input[type="radio"] {
+            display: none; /* Hide the actual radio buttons */
+        }
+
+        .star-rating label {
+            font-size: 2rem;
+            color: #ccc;
+            cursor: pointer;
+            transition: color 0.2s ease;
+            padding: 0 0.2rem;
+        }
+        
+        .star-rating:not(:hover) input:checked ~ label,
+        .star-rating:hover input ~ label:hover,
+        .star-rating:hover input ~ label:hover ~ label {
+            color: var(--primary);
+        }
     </style>
 </head>
 <body>
@@ -408,6 +472,28 @@
             <div class="container">
                 <h2>Got Feedback?</h2>
                 <p>Please, leave us some feedback. We desperately need it.</p>
+                <!-- START: Fake Feedback Form -->
+            <div class="fake-form">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your name...">
+                </div>
+                <div class="form-group">
+                    <label>Your Rating</label>
+                    <div class="star-rating">
+                        <input type="radio" id="star5" name="rating" value="5"><label for="star5" title="5 stars">★</label>
+                        <input type="radio" id="star4" name="rating" value="4"><label for="star4" title="4 stars">★</label>
+                        <input type="radio" id="star3" name="rating" value="3"><label for="star3" title="3 stars">★</label>
+                        <input type="radio" id="star2" name="rating" value="2"><label for="star2" title="2 stars">★</label>
+                        <input type="radio" id="star1" name="rating" value="1"><label for="star1" title="1 star">★</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="comment">Your Feedback</label>
+                    <textarea id="comment" name="comment" rows="4" placeholder="We're all ears..."></textarea>
+                </div>
+            </div>
+            <!-- END: Fake Feedback Form -->
                 <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="feedback-button">Leave Feedback</a>
                 <div class="feedback-image-container">
                     <img src="https://i.ibb.co/hJ9Krs8j/IMG-0795.jpg" alt="A photo of the website's creator and his partner">
