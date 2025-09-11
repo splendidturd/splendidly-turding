@@ -8,17 +8,17 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* ELEGANT GREEN THEME - COLOR PALETTE */
+        /* COLOR PALETTE */
         :root {
             --background: #F0F4F0;      /* Light sage green */
             --surface: #1B4332;         /* Deep regal forest green */
             --primary: #C0A062;         /* Soft, elegant gold */
             --secondary: #90A994;       /* Muted accent green for links/details */
             --text-on-dark: #E8F5E9;    /* Off-white for text on dark surfaces */
-            --text-on-light: #0D211A;   /* Very dark green for text on light surfaces */
+            --text-on-light: #0D211A;   /*  dark green for text on light surfaces */
         }
 
-        /* General Body and Typography */
+        /* Body and Typography */
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--background);
@@ -31,7 +31,7 @@
 
         h1, h2, h3 {
             font-weight: 700;
-            color: var(--primary); /* Gold headings for contrast */
+            color: var(--primary);
         }
 
         h1 { font-size: 2.875rem; }
@@ -177,7 +177,7 @@
             #hero h1 { font-size: 4.6rem; }
         }
 
-        /* Elegant section styling */
+        /* section styling */
         #gallery, #about, #news, #video-feature {
             background-color: var(--surface);
             border-radius: 25px;
@@ -528,8 +528,8 @@
             <div class="container">
                 <h2>Got Feedback?</h2>
                 <p>Please, leave us some feedback. We desperately need it.</p>
-                <!-- START: Fake Feedback Form -->
-            <div class="fake-form">
+            <!-- START: Fake Feedback Form -->
+              <div class="fake-form">
                 <div class="form-group">
                     <label for="name">Your Name</label>
                     <input type="text" id="name" name="name" placeholder="Enter your name...">
@@ -547,7 +547,7 @@
                 <div class="form-group">
                     <label for="comment">Your Feedback</label>
                     <textarea id="comment" name="comment" rows="4" placeholder="We're all ears..."></textarea>
-                </div>
+               </div>
             </div>
             <!-- END: Fake Feedback Form -->
                 <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="feedback-button">Leave Feedback</a>
