@@ -363,6 +363,61 @@
         .star-rating:hover input ~ label:hover ~ label {
             color: var(--primary);
         }
+        
+        /* Guest Book Styling */
+        #guestbook {
+            background-color: var(--surface);
+            border-radius: 25px;
+            margin: 1rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .guestbook-entries {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .guestbook-entry {
+            background: rgba(240, 244, 240, 0.05);
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .entry-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            border-bottom: 1px solid rgba(144, 169, 148, 0.2); /* var(--secondary) with alpha */
+            padding-bottom: 0.75rem;
+        }
+
+        .guestbook-entry h3 {
+            color: var(--secondary);
+            margin: 0;
+        }
+
+        .entry-stars {
+            font-size: 1.2rem;
+        }
+
+        .entry-stars .star-filled {
+            color: var(--primary);
+        }
+
+        .entry-stars .star-empty {
+            color: rgba(240, 244, 240, 0.2);
+        }
+
+        .entry-comment {
+            font-style: italic;
+            margin: 0;
+            color: var(--text-on-dark);
+            opacity: 0.9;
+        }
     </style>
 </head>
 <body>
@@ -375,6 +430,7 @@
             <a href="#video-feature">how we got here</a>
             <a href="#news">news</a>
             <a href="#feedback">leave feedback</a>
+            <a href="#guestbook">guest book</a>
         </nav>
     </header>
 
@@ -501,11 +557,45 @@
                 </div>
             </div>
         </section>
+        <section id="guestbook">
+                <div class="container">
+                    <h2>Guest Book</h2>
+                    <div class="guestbook-entries">
+                        <div class="guestbook-entry">
+                            <div class="entry-header">
+                                <h3>Graham</h3>
+                                <div class="entry-stars">
+                                    <span class="star-filled">★</span><span class="star-filled">★</span><span class="star-filled">★</span><span class="star-empty">☆</span><span class="star-empty">☆</span>
+                                </div>
+                            </div>
+                            <p class="entry-comment">"weird art but a chuffin’ great shite."</p>
+                        </div>
+                        <div class="guestbook-entry">
+                            <div class="entry-header">
+                                <h3>Gangubai</h3>
+                                <div class="entry-stars">
+                                    <span class="star-filled">★</span><span class="star-empty">☆</span><span class="star-empty">☆</span><span class="star-empty">☆</span><span class="star-empty">☆</span>
+                                </div>
+                            </div>
+                            <p class="entry-comment">"here I sat, humiliated by a dog licking my toes on the toilet. A shameful establishment."</p>
+                        </div>
+                        <div class="guestbook-entry">
+                            <div class="entry-header">
+                                <h3>Christoph</h3>
+                                <div class="entry-stars">
+                                    <span class="star-filled">★</span><span class="star-filled">★</span><span class="star-filled">★</span><span class="star-filled">★</span><span class="star-filled">★</span>
+                                </div>
+                            </div>
+                            <p class="entry-comment">"I enjoyed myself thoroughly. But then, I enjoy everything… until I do not. This loo walks a very fine line."</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
     </main>
     
     <footer>
         <div class="container">
-            <p>&copy; 2024 Splendidly Turding. All rights reserved. Do not attempt to use this website in zero gravity conditions.</p>
+            <p>&copy; 2024 Splendidly Turding. All rights reserved. In this matter, eight metre. DEPTH.</p>
         </div>
     </footer>
 
