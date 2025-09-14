@@ -255,6 +255,18 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); overflow: hidden;
             transition: transform 0.3s ease; display: flex; flex-direction: column; cursor: pointer;
         }
+        /* Makes news items work in the carousel */
+        .carousel-container .news-item {
+            flex: 0 0 90%;
+            scroll-snap-align: start;
+        }
+
+        @media (min-width: 768px) {
+            .carousel-container .news-item {
+                flex: 0 0 60%;
+                scroll-snap-align: center;
+            }
+        }
         .news-item:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); }
         .news-link { display: flex; flex-direction: column; text-decoration: none; color: var(--text-on-dark); }
         .news-item-content { padding: 1rem; display: flex; flex-direction: column; justify-content: center; }
@@ -510,13 +522,25 @@
         <section id="news">
             <div class="container">
                 <h2>Latest News</h2>
-                <div class="news-grid">
+                <p>For a visit requiring more in-depth diversion, please check out some news stories important to Malu & Bobby.</p>
+                
+                <div class="carousel-container"> 
                     <div class="news-item">
                         <a href="https://www.aljazeera.com/tag/gaza/" class="news-link">
                             <img src="https://t3.ftcdn.net/jpg/02/51/12/84/360_F_251128433_m3EPEDXtlbtEQZCA86xRZkBMaRazBjRn.jpg" alt="news image">
                             <div class="news-item-content">
                                 <h3>News Important to Bobby and Malu</h3>
                                 <p>For a sitting that requires a more in-depth read, please click to <a href="https://www.aljazeera.com/tag/gaza/">open a news page important to us</a>.</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="news-item">
+                        <a href="#" class="news-link">
+                            <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=2070&auto=format&fit=crop" alt="placeholder news image">
+                            <div class="news-item-content">
+                                <h3>Another Headline Here</h3>
+                                <p>This is a placeholder for your next important news story. Click to learn more.</p>
                             </div>
                         </a>
                     </div>
