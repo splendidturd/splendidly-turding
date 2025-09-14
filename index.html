@@ -267,7 +267,11 @@
                 scroll-snap-align: center;
             }
         }
-        .news-item:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); }
+        /* This new class will be added by JavaScript on scroll */
+        .news-item.is-prominent {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            }
         .news-link { display: flex; flex-direction: column; text-decoration: none; color: var(--text-on-dark); }
         .news-item-content { padding: 1rem; display: flex; flex-direction: column; justify-content: center; }
         .news-item img { width: 100%; height: 200px; object-fit: cover; }
@@ -656,6 +660,37 @@
                 });
             });
         });
+        // START: News item scroll animation
+            const newsCarousel = document.querySelector('#news .carousel-container');
+            const newsItems = document.querySelectorAll('#news .news-item');
+
+            // Check if the news carousel exists to prevent errors
+            if (newsCarousel && newsItems.length > 0) {
+                
+                // These options tell the observer to watch inside the carousel
+                const observerOptions = {
+                    root: newsCarousel,
+                    threshold: 0.6 // Trigger when 60% of an item is visible
+                };
+
+                const observerCallback = (entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            // When an item scrolls into view, remove the class from all others
+                            newsItems.forEach(item => item.classList.remove('is-prominent'));
+                            // Then, add the class to the one in view
+                            entry.target.classList.add('is-prominent');
+                        }
+                    });
+                };
+
+                // Create the observer
+                const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+                // Tell the observer to watch each news item
+                newsItems.forEach(item => observer.observe(item));
+            }
+            // END: News item scroll animation
     </script>
 </body>
 </html>
