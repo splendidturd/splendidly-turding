@@ -202,7 +202,9 @@
             background: rgba(240, 244, 240, 0.05); border-radius: 15px; padding: 1rem;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
-        .gallery-item:hover { transform: translateY(-10px) scale(1.03); }
+        .gallery-item.is-prominent {
+            transform: translateY(-10px) scale(1.03);
+            }
         .gallery-item img {
             width: 100%; height: 200px; object-fit: contain;
             border-radius: 10px; margin-bottom: 0.5rem;
@@ -689,7 +691,31 @@
 
                 // Tell the observer to watch each news item
                 newsItems.forEach(item => observer.observe(item));
+                
             }
+            // START: Gallery item scroll animation
+            const galleryCarousel = document.querySelector('#gallery .carousel-container');
+            const galleryItems = document.querySelectorAll('#gallery .gallery-item');
+
+            if (galleryCarousel && galleryItems.length > 0) {
+                const galleryObserverOptions = {
+                    root: galleryCarousel,
+                    threshold: 0.6
+                };
+
+                const galleryObserverCallback = (entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            galleryItems.forEach(item => item.classList.remove('is-prominent'));
+                            entry.target.classList.add('is-prominent');
+                        }
+                    });
+                };
+
+                const galleryObserver = new IntersectionObserver(galleryObserverCallback, galleryObserverOptions);
+                galleryItems.forEach(item => galleryObserver.observe(item));
+            }
+            // END: Gallery item scroll animation
             // END: News item scroll animation
     </script>
 </body>
