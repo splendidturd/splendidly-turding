@@ -282,7 +282,34 @@
             .news-item img { width: 40%; height: auto; }
             .news-item-content { width: 60%; }
         }
+        /* --- START: Snippet 2 (Video Carousel Styling) --- */
+        /* Basic styling to make the video items look like the others */
+        .video-item {
+            background: rgba(240, 244, 240, 0.05); border-radius: 15px; padding: 1rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); display: flex; flex-direction: column;
+            align-items: center; transition: transform 0.3s ease; cursor: pointer;
+        }
         
+        /* Video items size in the carousel (borrowed from news items) */
+        .carousel-container .video-item {
+            flex: 0 0 90%;
+            scroll-snap-align: start;
+        }
+        
+        /* Prominence effect (borrowed from news items) */
+        .video-item.is-prominent {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        
+        @media (min-width: 768px) {
+            .carousel-container .video-item {
+                flex: 0 0 60%; 
+                scroll-snap-align: center;
+            }
+        }
+        /* --- END: Snippet 2 (Video Carousel Styling) --- */
+
         /* Leave Feedback & Footer */
         #feedback { text-align: center; background-color: var(--background); }
         #feedback p, #feedback h2 { color: var(--text-on-light); }
@@ -518,19 +545,38 @@
         <section id="video-feature">
             <div class="container">
                 <h2>No Dijaaster, That You Like</h2>
-                <p>For those moments of intimate contemplation. This video is the only explanation you need for how the world came to be how it inexplicably is.</p>
-                <div class="video-wrapper">
-                    <iframe 
-                        src="https://www.youtube.com/embed/20A0qRo8aLM" 
-                        title="YouTube video player" 
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen>
-                    </iframe>
+                <p>For those moments of intimate contemplation. These videos are the only explanation you need for how the world came to be how it inexplicably is.</p>
+                
+                <div class="carousel-container"> 
+                    
+                    <div class="video-item">
+                        <div class="video-wrapper">
+                            <iframe 
+                                src="https://www.youtube.com/embed/20A0qRo8aLM" 
+                                title="YouTube video player" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                    </div>
+                    
+                    <div class="video-item">
+                        <div class="video-wrapper">
+                            <iframe 
+                                src="https://www.youtube.com/embed/uCwOeT2VnKU" 
+                                title="YouTube video player" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                    </div>
+                    
                 </div>
-            </div>
+                </div>
         </section>
-
+        
         <section id="news">
             <div class="container">
                 <h2>News Stand</h2>
@@ -732,6 +778,34 @@
                 const galleryObserver = new IntersectionObserver(galleryObserverCallback, galleryObserverOptions);
                 galleryItems.forEach(item => galleryObserver.observe(item));
             }
+            // --- START: Snippet 3 (Video Carousel JS) ---
+            // START: Video item scroll animation
+            const videoCarousel = document.querySelector('#video-feature .carousel-container');
+            const videoItems = document.querySelectorAll('#video-feature .video-item');
+            
+            if (videoCarousel && videoItems.length > 0) {
+                const videoObserverOptions = {
+                    root: videoCarousel,
+                    threshold: 0.6
+                };
+            
+                const videoObserverCallback = (entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            videoItems.forEach(item => item.classList.remove('is-prominent'));
+                            entry.target.classList.add('is-prominent');
+                        }
+                    });
+                };
+            
+                const videoObserver = new IntersectionObserver(videoObserverCallback, videoObserverOptions);
+                videoItems.forEach(item => videoObserver.observe(item));
+            }
+            // END: Video item scroll animation
+            // --- END: Snippet 3 (Video Carousel JS) ---
+            
+            // END: Gallery item scroll animation
+            // END: News item scroll animation
             // END: Gallery item scroll animation
             // END: News item scroll animation
     </script>
