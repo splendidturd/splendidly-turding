@@ -190,43 +190,29 @@
             opacity: 0.9;
         }
 
-        /* Carousel containers for all carousels */
-		.carousel-container {
-			display: flex; overflow-x: auto; scroll-behavior: smooth;
-			-webkit-overflow-scrolling: touch; padding: 1rem 0; gap: 1rem; scroll-snap-type: x mandatory;
-		}
+        /* Gallery Section */
+        .carousel-container {
+            display: flex; overflow-x: auto; scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch; padding: 1rem 0; gap: 1rem; scroll-snap-type: x mandatory;
+        }
 
-		/* Base item styling for all carousels */
-		.carousel-item {
-			flex: 0 0 80%; /* Default for smaller screens, adjust later */
-			scroll-snap-align: start;
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			transition: transform 0.3s ease, box-shadow 0.3s ease;
-			cursor: pointer;
-			background: rgba(240, 244, 240, 0.05);
-			border-radius: 15px;
-			padding: 1rem;
-			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-		}
+        .gallery-item {
+            flex: 0 0 80%; scroll-snap-align: start; display: flex; flex-direction: column;
+            align-items: center; transition: transform 0.3s ease; cursor: pointer;
+            background: rgba(240, 244, 240, 0.05); border-radius: 15px; padding: 1rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .gallery-item.is-prominent {
+            transform: translateY(-10px) scale(1.03);
+            }
+        .gallery-item img {
+            width: 100%; height: 200px; object-fit: contain;
+            border-radius: 10px; margin-bottom: 0.5rem;
+        }
 
-		/* Prominence class applied by JS for current item in view */
-		.carousel-item.is-prominent {
-			transform: translateY(-10px) scale(1.03);
-			box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-		}
-
-		/* Gallery Item Specifics */
-		.gallery-item img {
-			width: 100%; height: 200px; object-fit: contain;
-			border-radius: 10px; margin-bottom: 0.5rem;
-		}
-
-		@media (min-width: 768px) {
-			.carousel-item { flex: 0 0 30%; scroll-snap-align: center; } /* Wider viewports */
-			#news .carousel-item { flex: 0 0 60%; } /* News takes more space */
-		}
+        @media (min-width: 768px) {
+            .gallery-item { flex: 0 0 30%; scroll-snap-align: center; }
+        }
 
         /* About Section (Tabs) */
         .tabs {
@@ -254,23 +240,15 @@
         .tab-content-item.active { display: block; }
         
         /* Video Feature Section */
-		#video-feature { text-align: center; }
-
-		/* Video wrapper for aspect ratio control */
-		.video-wrapper {
-			position: relative; height: 0; overflow: hidden;
-        	width: 100%;
-			max-width: 360px; /* Constrain max width for portrait videos */
-			margin: 2rem auto; border-radius: 15px;
-			box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-		}
-
-		.video-wrapper.aspect-16-9 { padding-bottom: 56.25%; /* For standard landscape videos */ }
-		.video-wrapper.aspect-9-16 { padding-bottom: 177.77%; /* For YouTube Shorts / portrait videos */ }
-
-		.video-wrapper iframe {
-			position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-		}
+        #video-feature { text-align: center; }
+        .video-wrapper {
+            position: relative; padding-bottom: 177.77%; height: 0; overflow: hidden;
+            max-width: 360px; margin: 2rem auto; border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        .video-wrapper iframe {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+        }
 
         /* News Section */
         .news-grid { display: grid; gap: 2rem; }
@@ -279,7 +257,23 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); overflow: hidden;
             transition: transform 0.3s ease; display: flex; flex-direction: column; cursor: pointer;
         }
+        /* Makes news items work in the carousel */
+        .carousel-container .news-item {
+            flex: 0 0 90%;
+            scroll-snap-align: start;
+        }
 
+        @media (min-width: 768px) {
+            .carousel-container .news-item {
+                flex: 0 0 60%;
+                scroll-snap-align: center;
+            }
+        }
+        /* This new class will be added by JavaScript on scroll */
+        .news-item.is-prominent {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            }
         .news-link { display: flex; flex-direction: column; text-decoration: none; color: var(--text-on-dark); }
         .news-item-content { padding: 1rem; display: flex; flex-direction: column; justify-content: center; }
         .news-item img { width: 100%; height: 200px; object-fit: cover; }
@@ -496,25 +490,25 @@
                 <h2>Gallery of Memes</h2>
                 <p>Memes curated to amuse those in for a quick visit.</p>
                 <div class="carousel-container">
-                    <div class="gallery-item carousel-item">
+                    <div class="gallery-item">
                         <img src="https://i.pinimg.com/236x/3f/51/c6/3f51c62590c4667186fc048765a1548a.jpg" alt="A dog in a McDonald's uniform">
                     </div>
-                    <div class="gallery-item carousel-item">
+                    <div class="gallery-item">
                         <img src="https://images3.memedroid.com/images/UPLOADED260/5e071a2ea3305.jpeg" alt="A cat wearing a wizard hat">
                     </div>
-                    <div class="gallery-item carousel-item">
+                    <div class="gallery-item">
                         <img src="https://thunderdungeon.com/wp-content/uploads/2024/10/nihilist-memes-32-10-8-2024-600x710.jpg" alt="A lizard wearing a jazz hat">
                     </div>
-                    <div class="gallery-item carousel-item">
+                    <div class="gallery-item">
                         <img src="https://i.ibb.co/BFd1RGq/IMG-0667.jpg" alt="A cat smiling warmly">
                     </div>
-                    <div class="gallery-item carousel-item">
+                    <div class="gallery-item">
                         <img src="https://i.ibb.co/1tppKZsJ/IMG-2221.jpg" alt="A cat smiling warmly">
                     </div>
-                    <div class="gallery-item carousel-item">
+                    <div class="gallery-item">
                         <img src="https://iili.io/KIjIXDl.md.jpg" alt="Are you understand warmly">
                     </div>
-                    <div class="gallery-item carousel-item">
+                    <div class="gallery-item">
                         <img src="https://images.teepublic.com/derived/production/designs/2919285_0/1532182141/i_m:pid_477,c_133_76_1108x1108,bc_ffffff,ar_1x1,o_portrait,pm_4,s_630,q_90.jpg" alt="i am a unicorn">
                     </div>
                 </div>
@@ -524,34 +518,19 @@
         <section id="video-feature">
             <div class="container">
                 <h2>No Dijaaster, That You Like</h2>
-                <p>For those moments of intimate contemplation. These videos are the only explanation you need for how the world came to be how it inexplicably is.</p>
-                <div class="carousel-container">
-                    <div class="video-item carousel-item">
-                        <div class="video-wrapper aspect-16-9">
-                            <iframe 
-                                src="https://www.youtube.com/embed/20A0qRo8aLM" 
-                                title="YouTube video player" 
-                                frameborder="0" 
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                allowfullscreen>
-                            </iframe>
-                        </div>
-                    </div>
-                    <div class="video-item carousel-item">
-                        <div class="video-wrapper aspect-9-16">
-                            <iframe 
-                                src="https://www.youtube.com/embed/uCwOeT2VnKU" 
-                                title="YouTube video player" 
-                                frameborder="0" 
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                allowfullscreen>
-                            </iframe>
-                        </div>
-                    </div>
+                <p>For those moments of intimate contemplation. This video is the only explanation you need for how the world came to be how it inexplicably is.</p>
+                <div class="video-wrapper">
+                    <iframe 
+                        src="https://www.youtube.com/embed/20A0qRo8aLM" 
+                        title="YouTube video player" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
                 </div>
             </div>
         </section>
-        
+
         <section id="news">
             <div class="container">
                 <h2>News Stand</h2>
@@ -700,35 +679,61 @@
                 });
             });
         });
-        // Generic Intersection Observer for carousels
-        function setupCarouselObserver(carouselSelector, itemSelector) {
-            const carousel = document.querySelector(carouselSelector);
-            const items = document.querySelectorAll(itemSelector);
-        
-            if (carousel && items.length > 0) {
+        // START: News item scroll animation
+            const newsCarousel = document.querySelector('#news .carousel-container');
+            const newsItems = document.querySelectorAll('#news .news-item');
+
+            // Check if the news carousel exists to prevent errors
+            if (newsCarousel && newsItems.length > 0) {
+                
+                // These options tell the observer to watch inside the carousel
                 const observerOptions = {
-                    root: carousel,
+                    root: newsCarousel,
                     threshold: 0.6 // Trigger when 60% of an item is visible
                 };
-        
+
                 const observerCallback = (entries) => {
                     entries.forEach(entry => {
                         if (entry.isIntersecting) {
-                            items.forEach(item => item.classList.remove('is-prominent'));
+                            // When an item scrolls into view, remove the class from all others
+                            newsItems.forEach(item => item.classList.remove('is-prominent'));
+                            // Then, add the class to the one in view
                             entry.target.classList.add('is-prominent');
                         }
                     });
                 };
-        
+
+                // Create the observer
                 const observer = new IntersectionObserver(observerCallback, observerOptions);
-                items.forEach(item => observer.observe(item));
+
+                // Tell the observer to watch each news item
+                newsItems.forEach(item => observer.observe(item));
+                
             }
-        }
-        
-        // Setup observers for all carousels
-        setupCarouselObserver('#gallery .carousel-container', '#gallery .carousel-item');
-        setupCarouselObserver('#news .carousel-container', '#news .carousel-item');
-        setupCarouselObserver('#video-feature .carousel-container', '#video-feature .carousel-item');
+            // START: Gallery item scroll animation
+            const galleryCarousel = document.querySelector('#gallery .carousel-container');
+            const galleryItems = document.querySelectorAll('#gallery .gallery-item');
+
+            if (galleryCarousel && galleryItems.length > 0) {
+                const galleryObserverOptions = {
+                    root: galleryCarousel,
+                    threshold: 0.6
+                };
+
+                const galleryObserverCallback = (entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            galleryItems.forEach(item => item.classList.remove('is-prominent'));
+                            entry.target.classList.add('is-prominent');
+                        }
+                    });
+                };
+
+                const galleryObserver = new IntersectionObserver(galleryObserverCallback, galleryObserverOptions);
+                galleryItems.forEach(item => galleryObserver.observe(item));
+            }
+            // END: Gallery item scroll animation
+            // END: News item scroll animation
     </script>
 </body>
 </html>
