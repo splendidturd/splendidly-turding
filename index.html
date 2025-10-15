@@ -225,7 +225,7 @@
 
 		@media (min-width: 768px) {
 			.carousel-item { flex: 0 0 30%; scroll-snap-align: center; } /* Wider viewports */
-			.news-item { flex: 0 0 60%; } /* News takes more space */
+			#news .carousel-item { flex: 0 0 60%; } /* News takes more space */
 		}
 
         /* About Section (Tabs) */
@@ -259,6 +259,7 @@
 		/* Video wrapper for aspect ratio control */
 		.video-wrapper {
 			position: relative; height: 0; overflow: hidden;
+        	width: 100%;
 			max-width: 360px; /* Constrain max width for portrait videos */
 			margin: 2rem auto; border-radius: 15px;
 			box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
