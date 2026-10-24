@@ -694,7 +694,9 @@
             const feedbackBtn = document.querySelector('.feedback-button');
 
             if (feedbackBtn) {
-                feedbackBtn.addEventListener('click', () => {
+                feedbackBtn.addEventListener('click', (e) => {
+                    e.preventDefault(); // Stop instant navigation so JS can run
+        
                     const nameInput = document.getElementById('name');
                     const commentInput = document.getElementById('comment');
                     const star5Input = document.getElementById('star5');
@@ -704,10 +706,14 @@
                         commentInput.value = "Never gonna give you up\nNever gonna let you down\nNever gonna run around and desert you\nNever gonna make you cry\nNever gonna say goodbye\nNever gonna tell a lie and hurt you";
                     }
                     if (star5Input) star5Input.checked = true;
+        
+                    // Open the link after a 150ms delay so the form updates first
+                    const targetUrl = feedbackBtn.getAttribute('href');
+                    setTimeout(() => {
+                        window.open(targetUrl, '_blank');
+                    }, 150);
                 });
             }
-
-
         });
         // START: News item scroll animation
             const newsCarousel = document.querySelector('#news .carousel-container');
