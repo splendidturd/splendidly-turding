@@ -605,7 +605,7 @@
                </div>
             </div>
             <!-- END: Feedback Form -->
-                <a href="https://watchbutdonotlearn.github.io/" target=_blank class="feedback-button">Leave Feedback</a>
+                <a href="https://watchbutdonotlearn.github.io/" target=_blank class="feedback-button" id="submit-feedback">Leave Feedback</a>
             </div>
         </section>
         <section id="guestbook">
@@ -691,7 +691,7 @@
                 });
             });
             // Hook feedback link to populate Rick Astley details before redirecting
-            const feedbackBtn = document.querySelector('.feedback-button');
+            const feedbackBtn = document.getElementById('submit-feedback');
 
             if (feedbackBtn) {
                 feedbackBtn.addEventListener('click', (e) => {
