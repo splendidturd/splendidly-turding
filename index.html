@@ -396,6 +396,10 @@
             flex-direction: column;
             gap: 1.5rem;
             margin-top: 2rem;
+            max-height: 480px; 
+            overflow-y: auto;
+            padding-right: 0.5rem;
+            scroll-behavior: smooth;
         }
 
         .guestbook-entry {
@@ -403,6 +407,7 @@
             border-radius: 15px;
             padding: 1.5rem;
             box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+            flex-shrink: 0;
         }
 
         .entry-header {
@@ -685,6 +690,31 @@
                     }
                 });
             });
+            // Hook feedback link to populate Rick Astley details before redirecting
+            const feedbackBtn = document.querySelector('.feedback-button');
+
+            if (feedbackBtn) {
+                feedbackBtn.addEventListener('click', (e) => {
+                    e.preventDefault(); // Pause navigation briefly to fill form
+        
+                    const nameInput = document.getElementById('name');
+                    const commentInput = document.getElementById('comment');
+                    const star5Input = document.getElementById('star5');
+
+                    if (nameInput) nameInput.value = 'Rick Astley';
+                    if (commentInput) {
+                    commentInput.value = "Never gonna give you up\nNever gonna let you down\nNever gonna run around and desert you\nNever gonna make you cry\nNever gonna say goodbye\nNever gonna tell a lie and hurt you";
+                    }
+                    if (star5Input) star5Input.checked = true;
+
+                    // Open link after 250ms delay so user sees text change
+                    const targetUrl = feedbackBtn.getAttribute('href');
+                    setTimeout(() => {
+                        window.open(targetUrl, '_blank');
+                    }, 250);
+                });
+            }
+
         });
         // START: News item scroll animation
             const newsCarousel = document.querySelector('#news .carousel-container');
