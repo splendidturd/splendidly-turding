@@ -694,26 +694,19 @@
             const feedbackBtn = document.querySelector('.feedback-button');
 
             if (feedbackBtn) {
-                feedbackBtn.addEventListener('click', (e) => {
-                    e.preventDefault(); // Pause navigation briefly to fill form
-        
+                feedbackBtn.addEventListener('click', () => {
                     const nameInput = document.getElementById('name');
                     const commentInput = document.getElementById('comment');
                     const star5Input = document.getElementById('star5');
-
+        
                     if (nameInput) nameInput.value = 'Rick Astley';
                     if (commentInput) {
-                    commentInput.value = "Never gonna give you up\nNever gonna let you down\nNever gonna run around and desert you\nNever gonna make you cry\nNever gonna say goodbye\nNever gonna tell a lie and hurt you";
+                        commentInput.value = "Never gonna give you up\nNever gonna let you down\nNever gonna run around and desert you\nNever gonna make you cry\nNever gonna say goodbye\nNever gonna tell a lie and hurt you";
                     }
                     if (star5Input) star5Input.checked = true;
-
-                    // Open link after 250ms delay so user sees text change
-                    const targetUrl = feedbackBtn.getAttribute('href');
-                    setTimeout(() => {
-                        window.open(targetUrl, '_blank');
-                    }, 250);
                 });
             }
+
 
         });
         // START: News item scroll animation
