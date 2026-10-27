@@ -10,36 +10,36 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* COLOR PALETTE - ~10% Darker Light Sage Background & Explicit Dark Mode Lock */
+        /* COLOR PALETTE - Balanced Sage & Deep Translucent Green Cards */
         :root,
         :root[data-theme="light"],
         :root[data-theme="dark"] {
             color-scheme: light dark;
-            --background: #E4ECE5;      /* ~10% darker sage background */
-            --surface: #2D5A4C;         /* Muted, elegant deep green */
-            --card-bg: #EAF0EA;         /* Crisp light sage card background for high contrast */
+            --background: #CED9D0;      /* Gentle middle-ground sage background */
+            --surface: #2D5A4C;         /* Muted, elegant deep forest green */
+            --card-bg: #163327;         /* Deep rich dark green card tone - NO off-whites */
             --primary: #B89758;         /* Soft, warm elegant gold */
-            --secondary: #829B87;       /* Soft muted accent green for links/details */
-            --text-on-dark: #F0F4F1;    /* Soft off-white for section headings/text */
-            --text-on-light: #1A332B;   /* Deep soft green for inner card text */
+            --secondary: #A3BCA6;       /* Gentle sage accent green for labels & details */
+            --text-on-dark: #F0F4F1;    /* Soft off-white for main section headings */
+            --card-text: #E4ECE5;       /* Muted light sage text inside cards */
         }
 
         @media (prefers-color-scheme: dark) {
             :root {
-                --background: #E4ECE5 !important;
+                --background: #CED9D0 !important;
                 --surface: #2D5A4C !important;
-                --card-bg: #EAF0EA !important;
+                --card-bg: #163327 !important;
                 --primary: #B89758 !important;
-                --secondary: #829B87 !important;
+                --secondary: #A3BCA6 !important;
                 --text-on-dark: #F0F4F1 !important;
-                --text-on-light: #1A332B !important;
+                --card-text: #E4ECE5 !important;
             }
         }
 
         /* Body and Typography */
         html, body {
             background-color: var(--background) !important;
-            color: var(--text-on-light) !important;
+            color: var(--card-text) !important;
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
             margin: 0;
@@ -82,7 +82,7 @@
             position: relative;
         }
         
-        /* Sticky Header and Navigation Fix */
+        /* Sticky Header and Navigation */
         header {
             display: flex;
             justify-content: space-between;
@@ -236,12 +236,13 @@
             flex: 0 0 80%; scroll-snap-align: start; display: flex; flex-direction: column;
             align-items: center; transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;
             background: var(--card-bg) !important; border-radius: 18px; padding: 1rem;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
-            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+            border: 1px solid rgba(184, 151, 88, 0.2);
         }
         .gallery-item.is-prominent {
             transform: translateY(-8px) scale(1.03);
-            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.28);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+            border-color: rgba(184, 151, 88, 0.5);
         }
         .gallery-item img {
             width: 100%; height: 200px; object-fit: contain;
@@ -259,33 +260,34 @@
         }
 
         .tab-button {
-            padding: 0.8rem 1.25rem; border-radius: 50px; background: rgba(255, 255, 255, 0.12);
+            padding: 0.8rem 1.25rem; border-radius: 50px; background: rgba(22, 51, 39, 0.6);
             color: var(--text-on-dark) !important; cursor: pointer;
             transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s ease;
-            font-weight: 700; box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
-            text-align: center; border: none;
+            font-weight: 700; box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .tab-button.active, .tab-button:hover {
             background-color: var(--primary) !important; color: var(--surface) !important; transform: translateY(-3px);
+            border-color: var(--primary);
         }
 
         .tab-content-item {
             display: none; padding: 1.75rem; animation: fadeIn 0.8s ease-in;
             background: var(--card-bg) !important; border-radius: 18px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
-            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+            border: 1px solid rgba(184, 151, 88, 0.2);
         }
         .tab-content-item.active { display: block; }
 
         .tab-content-item h3 {
-            color: var(--text-on-light) !important;
+            color: var(--primary) !important;
             margin-top: 0;
         }
 
         .tab-content-item p {
-            color: var(--text-on-light) !important;
-            opacity: 0.92;
+            color: var(--card-text) !important;
+            opacity: 0.95;
         }
         
         /* Video Feature Section */
@@ -293,8 +295,8 @@
         .video-wrapper {
             position: relative; padding-bottom: 177.77%; height: 0; overflow: hidden;
             max-width: 360px; margin: 2rem auto; border-radius: 18px;
-            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(184, 151, 88, 0.25);
         }
         .video-wrapper iframe {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
@@ -304,9 +306,9 @@
         .news-grid { display: grid; gap: 2rem; }
         .news-item {
             background: var(--card-bg) !important; border-radius: 18px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18); overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25); overflow: hidden;
             transition: transform 0.3s ease, box-shadow 0.3s ease; display: flex; flex-direction: column; cursor: pointer;
-            border: 1px solid rgba(255, 255, 255, 0.4);
+            border: 1px solid rgba(184, 151, 88, 0.2);
         }
         .carousel-container .news-item {
             flex: 0 0 90%;
@@ -321,12 +323,13 @@
         }
         .news-item.is-prominent {
             transform: translateY(-6px) scale(1.02);
-            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+            border-color: rgba(184, 151, 88, 0.5);
         }
-        .news-link { display: flex; flex-direction: column; text-decoration: none; color: var(--text-on-light) !important; }
+        .news-link { display: flex; flex-direction: column; text-decoration: none; color: var(--card-text) !important; }
         .news-item-content { padding: 1.25rem; display: flex; flex-direction: column; justify-content: center; }
-        .news-item-content h3 { color: var(--text-on-light) !important; margin-top: 0; margin-bottom: 0.5rem; }
-        .news-item-content p { color: var(--text-on-light) !important; opacity: 0.9; margin: 0; }
+        .news-item-content h3 { color: var(--primary) !important; margin-top: 0; margin-bottom: 0.5rem; }
+        .news-item-content p { color: var(--card-text) !important; opacity: 0.92; margin: 0; }
         .news-item img { width: 100%; height: 200px; object-fit: cover; }
         @media (min-width: 768px) {
             .news-link { flex-direction: row; }
@@ -337,17 +340,16 @@
         /* Leave Feedback Section */
         #feedback { text-align: center; }
         #feedback p, #feedback h2 { color: var(--text-on-dark) !important; }
-        #feedback .caption { color: var(--secondary) !important; }
 
         .feedback-button {
             display: inline-block; padding: 1rem 3rem; background: var(--primary) !important;
             color: var(--surface) !important; font-size: 1.2rem; font-weight: 700; border-radius: 50px;
             transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.18); border: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); border: none;
         }
         .feedback-button:hover {
             transform: translateY(-5px); background: #d3b474 !important; color: var(--surface) !important;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
         }
         .feedback-image-container {
             display: flex; flex-direction: column; align-items: center;
@@ -355,14 +357,14 @@
             background: var(--card-bg) !important;
             padding: 1.25rem;
             border-radius: 20px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
-            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+            border: 1px solid rgba(184, 151, 88, 0.2);
         }
         .feedback-image-container img {
-            width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
         .feedback-image-container .caption {
-            color: var(--text-on-light) !important;
+            color: var(--card-text) !important;
             font-weight: 700;
             margin-top: 0.75rem;
             margin-bottom: 0;
@@ -376,8 +378,8 @@
             background: var(--card-bg) !important;
             padding: 1.75rem;
             border-radius: 18px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
-            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+            border: 1px solid rgba(184, 151, 88, 0.2);
         }
 
         .form-group {
@@ -387,7 +389,7 @@
         .form-group label {
             display: block;
             margin-bottom: 0.5rem;
-            color: var(--text-on-light) !important;
+            color: var(--card-text) !important;
             font-weight: 700;
         }
 
@@ -395,10 +397,10 @@
         .fake-form textarea {
             width: 100%;
             padding: 0.75rem 1rem;
-            background-color: #FFFFFF !important;
+            background-color: rgba(45, 90, 76, 0.35) !important;
             border: 2px solid var(--secondary) !important;
             border-radius: 8px;
-            color: var(--text-on-light) !important;
+            color: var(--card-text) !important;
             font-family: 'Inter', sans-serif;
             font-size: 1rem;
             box-sizing: border-box;
@@ -425,7 +427,7 @@
 
         .star-rating label {
             font-size: 2rem;
-            color: #C0C8C1 !important;
+            color: rgba(255, 255, 255, 0.25) !important;
             cursor: pointer;
             transition: color 0.2s ease;
             padding: 0 0.2rem;
@@ -460,9 +462,9 @@
             background: var(--card-bg) !important;
             border-radius: 18px;
             padding: 1.5rem;
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.22);
             flex-shrink: 0;
-            border: 1px solid rgba(255, 255, 255, 0.4);
+            border: 1px solid rgba(184, 151, 88, 0.2);
         }
 
         .entry-header {
@@ -470,12 +472,12 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 0.75rem;
-            border-bottom: 1px solid rgba(45, 90, 76, 0.15);
+            border-bottom: 1px solid rgba(163, 188, 166, 0.2);
             padding-bottom: 0.75rem;
         }
 
         .guestbook-entry h3 {
-            color: var(--text-on-light) !important;
+            color: var(--secondary) !important;
             margin: 0;
         }
 
@@ -488,13 +490,13 @@
         }
 
         .entry-stars .star-empty {
-            color: #C0C8C1 !important;
+            color: rgba(255, 255, 255, 0.2) !important;
         }
 
         .entry-comment {
             font-style: italic;
             margin: 0;
-            color: var(--text-on-light) !important;
+            color: var(--card-text) !important;
             opacity: 0.95;
         }
 
