@@ -3,14 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light">
     <title>Splendidly Turding</title>
     <link rel="icon" type="image/png" href="https://ibb.co/whQ043X3">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* COLOR PALETTE - Softer Greens & Elegant Touches */
+        /* Force light scheme behavior across mobile browsers */
         :root {
+            color-scheme: light;
             --background: #F4F7F4;      /* Soft, gentle light sage background */
             --surface: #2D5A4C;         /* Muted, elegant deep green */
             --primary: #B89758;         /* Soft, warm elegant gold */
@@ -20,10 +22,10 @@
         }
 
         /* Body and Typography */
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--background);
+        html, body {
+            background-color: var(--background) !important;
             color: var(--text-on-light);
+            font-family: 'Inter', sans-serif;
             line-height: 1.6;
             margin: 0;
             overflow-x: hidden;
@@ -67,7 +69,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 1rem;
-            background: rgba(45, 90, 76, 0.85); /* Semi-transparent softer surface */
+            background: rgba(45, 90, 76, 0.85);
             backdrop-filter: blur(10px);
             position: sticky;
             top: 0;
@@ -307,8 +309,13 @@
 
         footer {
             text-align: center; padding: 2rem 1rem; font-size: 0.9rem;
-            animation: slideInFromBottom 1s ease-out; background-color: var(--surface);
-            color: var(--secondary);
+            animation: slideInFromBottom 1s ease-out; background-color: var(--background);
+            color: var(--text-on-light);
+        }
+
+        footer p {
+            color: var(--text-on-light);
+            opacity: 0.8;
         }
 
         /* Animations */
