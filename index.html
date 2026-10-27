@@ -9,14 +9,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* COLOR PALETTE */
+        /* COLOR PALETTE - Softer Greens & Elegant Touches */
         :root {
-            --background: #F7FAF7;      /* Light sage green */
-            --surface: #1B4332;         /* Deep regal forest green */
-            --primary: #C0A062;         /* Soft, elegant gold */
-            --secondary: #90A994;       /* Muted accent green for links/details */
-            --text-on-dark: #E8F5E9;    /* Off-white for text on dark surfaces */
-            --text-on-light: #0D211A;   /*  dark green for text on light surfaces */
+            --background: #F4F7F4;      /* Soft, gentle light sage background */
+            --surface: #2D5A4C;         /* Muted, elegant deep green */
+            --primary: #B89758;         /* Soft, warm elegant gold */
+            --secondary: #829B87;       /* Soft muted accent green for links/details */
+            --text-on-dark: #F0F4F1;    /* Soft off-white for text on dark surfaces */
+            --text-on-light: #1A332B;   /* Deep soft green for text on light surfaces */
         }
 
         /* Body and Typography */
@@ -67,12 +67,12 @@
             justify-content: space-between;
             align-items: center;
             padding: 1rem;
-            background: rgba(27, 67, 50, 0.8); /* Semi-transparent forest green */
+            background: rgba(45, 90, 76, 0.85); /* Semi-transparent softer surface */
             backdrop-filter: blur(10px);
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
             border-bottom-left-radius: 15px;
             border-bottom-right-radius: 15px;
             animation: slideInFromTop 1s ease-out;
@@ -96,7 +96,7 @@
             display: block;
             width: 25px;
             height: 3px;
-            background-color: #E8F5E9;
+            background-color: var(--text-on-dark);
             margin: 5px 0;
             transition: transform 0.3s ease, opacity 0.3s ease;
             border-radius: 2px;
@@ -112,7 +112,7 @@
             right: -100%;
             width: 70%;
             height: 100vh;
-            background: rgba(27, 67, 50, 0.95); /* Nearly solid forest green */
+            background: rgba(45, 90, 76, 0.96); 
             backdrop-filter: blur(15px);
             display: flex;
             flex-direction: column;
@@ -148,7 +148,7 @@
             animation: fadeIn 2s ease-in;
             border-bottom-left-radius: 50px;
             border-bottom-right-radius: 50px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
             overflow: hidden;
             padding-top: 0;
             padding-bottom: 4rem;
@@ -166,11 +166,11 @@
 
         #hero::after {
             content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.3); z-index: 1;
+            background: rgba(0, 0, 0, 0.25); z-index: 1;
         }
 
         #hero h1 {
-            font-size: 2.875rem; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); z-index: 2;
+            font-size: 2.875rem; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4); z-index: 2;
             color: white; animation: scaleIn 1s ease-out; max-width: 90%;
         }
 
@@ -178,12 +178,12 @@
             #hero h1 { font-size: 4.6rem; }
         }
 
-        /* section styling */
-        #gallery, #about, #news, #video-feature {
+        /* Unified section styling across all blocks */
+        #gallery, #about, #news, #video-feature, #feedback, #guestbook, #thanks {
             background-color: var(--surface);
             border-radius: 25px;
             margin: 1rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
         }
         
         p {
@@ -200,8 +200,8 @@
         .gallery-item {
             flex: 0 0 80%; scroll-snap-align: start; display: flex; flex-direction: column;
             align-items: center; transition: transform 0.3s ease; cursor: pointer;
-            background: rgba(240, 244, 240, 0.05); border-radius: 15px; padding: 1rem;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.04); border-radius: 15px; padding: 1rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
         }
         .gallery-item.is-prominent {
             transform: translateY(-10px) scale(1.03);
@@ -222,10 +222,10 @@
         }
 
         .tab-button {
-            padding: 0.8rem 1.25rem; border-radius: 50px; background: rgba(240, 244, 240, 0.1);
+            padding: 0.8rem 1.25rem; border-radius: 50px; background: rgba(255, 255, 255, 0.06);
             color: var(--text-on-dark); cursor: pointer;
             transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s ease;
-            font-weight: 700; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            font-weight: 700; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
             text-align: center; border: none;
         }
 
@@ -235,8 +235,8 @@
 
         .tab-content-item {
             display: none; padding: 1rem; animation: fadeIn 0.8s ease-in;
-            background: rgba(240, 244, 240, 0.05); border-radius: 15px;
-            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+            background: rgba(255, 255, 255, 0.04); border-radius: 15px;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.15);
         }
         .tab-content-item.active { display: block; }
         
@@ -245,7 +245,7 @@
         .video-wrapper {
             position: relative; padding-bottom: 177.77%; height: 0; overflow: hidden;
             max-width: 360px; margin: 2rem auto; border-radius: 15px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
         }
         .video-wrapper iframe {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
@@ -254,11 +254,10 @@
         /* News Section */
         .news-grid { display: grid; gap: 2rem; }
         .news-item {
-            background: rgba(240, 244, 240, 0.05); border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); overflow: hidden;
+            background: rgba(255, 255, 255, 0.04); border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08); overflow: hidden;
             transition: transform 0.3s ease; display: flex; flex-direction: column; cursor: pointer;
         }
-        /* Makes news items work in the carousel */
         .carousel-container .news-item {
             flex: 0 0 90%;
             scroll-snap-align: start;
@@ -270,10 +269,9 @@
                 scroll-snap-align: center;
             }
         }
-        /* This new class will be added by JavaScript on scroll */
         .news-item.is-prominent {
             transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
             }
         .news-link { display: flex; flex-direction: column; text-decoration: none; color: var(--text-on-dark); }
         .news-item-content { padding: 1rem; display: flex; flex-direction: column; justify-content: center; }
@@ -284,27 +282,27 @@
             .news-item-content { width: 60%; }
         }
         
-        /* Leave Feedback & Footer */
-        #feedback { text-align: center; background-color: var(--background); }
-        #feedback p, #feedback h2 { color: var(--text-on-light); }
+        /* Leave Feedback Section */
+        #feedback { text-align: center; }
+        #feedback p, #feedback h2 { color: var(--text-on-dark); }
         #feedback .caption { color: var(--secondary); }
 
         .feedback-button {
             display: inline-block; padding: 1rem 3rem; background: var(--primary);
             color: var(--surface); font-size: 1.2rem; font-weight: 700; border-radius: 50px;
             transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); border: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15); border: none;
         }
         .feedback-button:hover {
             transform: translateY(-5px); background: var(--secondary); color: var(--surface);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
         }
         .feedback-image-container {
             display: flex; flex-direction: column; align-items: center;
             margin: 2rem auto; max-width: 300px;
         }
         .feedback-image-container img {
-            width: 100%; border-radius: 15px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            width: 100%; border-radius: 15px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
         }
 
         footer {
@@ -322,7 +320,7 @@
         /* Fake Form Styling */
         .fake-form {
             max-width: 600px;
-            margin: 0 auto 2rem auto; /* Add space between form and button */
+            margin: 0 auto 2rem auto;
             text-align: left;
         }
 
@@ -333,7 +331,7 @@
         .form-group label {
             display: block;
             margin-bottom: 0.5rem;
-            color: var(--text-on-light);
+            color: var(--text-on-dark);
             font-weight: 700;
         }
 
@@ -341,13 +339,13 @@
         .fake-form textarea {
             width: 100%;
             padding: 0.75rem 1rem;
-            background-color: rgba(27, 67, 50, 0.1); /* Subtle dark green */
+            background-color: rgba(255, 255, 255, 0.06);
             border: 2px solid var(--secondary);
             border-radius: 8px;
-            color: var(--text-on-light);
+            color: var(--text-on-dark);
             font-family: 'Inter', sans-serif;
             font-size: 1rem;
-            box-sizing: border-box; /* Important for consistent sizing */
+            box-sizing: border-box;
             transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
@@ -355,23 +353,23 @@
         .fake-form textarea:focus {
             outline: none;
             border-color: var(--primary);
-            box-shadow: 0 0 8px rgba(192, 160, 98, 0.5);
+            box-shadow: 0 0 8px rgba(184, 151, 88, 0.4);
         }
 
         /* Star Rating */
         .star-rating {
             display: flex;
-            flex-direction: row-reverse; /* This is key for the hover effect */
+            flex-direction: row-reverse;
             justify-content: left;
         }
 
         .star-rating input[type="radio"] {
-            display: none; /* Hide the actual radio buttons */
+            display: none;
         }
 
         .star-rating label {
             font-size: 2rem;
-            color: #ccc;
+            color: rgba(255, 255, 255, 0.25);
             cursor: pointer;
             transition: color 0.2s ease;
             padding: 0 0.2rem;
@@ -388,7 +386,7 @@
             background-color: var(--surface);
             border-radius: 25px;
             margin: 1rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
         }
 
         .guestbook-entries {
@@ -403,10 +401,10 @@
         }
 
         .guestbook-entry {
-            background: rgba(240, 244, 240, 0.05);
+            background: rgba(255, 255, 255, 0.04);
             border-radius: 15px;
             padding: 1.5rem;
-            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.15);
             flex-shrink: 0;
         }
 
@@ -415,7 +413,7 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 0.75rem;
-            border-bottom: 1px solid rgba(144, 169, 148, 0.2); /* var(--secondary) with alpha */
+            border-bottom: 1px solid rgba(130, 155, 135, 0.25);
             padding-bottom: 0.75rem;
         }
 
@@ -433,7 +431,7 @@
         }
 
         .entry-stars .star-empty {
-            color: rgba(240, 244, 240, 0.2);
+            color: rgba(255, 255, 255, 0.2);
         }
 
         .entry-comment {
@@ -447,7 +445,7 @@
 <body>
     <header>
         <div class="logo">Splendidly Turding</div>
-        <div class="hamburger"><span style="color:#E8F5E9"></span><span style="color:#E8F5E9"></span><span style="color:#E8F5E9"></span></div>
+        <div class="hamburger"><span></span><span></span><span></span></div>
         <nav>
             <a href="#about">wtf is this?</a>
             <a href="#gallery">memes</a>
@@ -608,89 +606,91 @@
                 <a href="https://watchbutdonotlearn.github.io/" target=_blank class="feedback-button" id="submit-feedback">Leave Feedback</a>
             </div>
         </section>
+
         <section id="guestbook">
-                <div class="container">
-                    <h2>Guest Book</h2>
-                    <div class="guestbook-entries">
-                        <div class="guestbook-entry">
-                            <div class="entry-header">
-                                <h3>Graham</h3>
-                                <div class="entry-stars">
-                                    <span class="star-filled">★</span><span class="star-filled">★</span><span class="star-filled">★</span><span class="star-empty">☆</span><span class="star-empty">☆</span>
-                                </div>
+            <div class="container">
+                <h2>Guest Book</h2>
+                <div class="guestbook-entries">
+                    <div class="guestbook-entry">
+                        <div class="entry-header">
+                            <h3>Graham</h3>
+                            <div class="entry-stars">
+                                <span class="star-filled">★</span><span class="star-filled">★</span><span class="star-filled">★</span><span class="star-empty">☆</span><span class="star-empty">☆</span>
                             </div>
-                            <p class="entry-comment">"weird art but a chuffin’ great shite."</p>
                         </div>
-                        <div class="guestbook-entry">
-                            <div class="entry-header">
-                                <h3>Sazzy Mags</h3>
-                                <div class="entry-stars">
-                                    <span class="star-filled">★</span><span class="star-filled">★</span><span class="star-filled">★</span><span class="star-filled">★</span><span class="star-filled">★</span>
-                                </div>
+                        <p class="entry-comment">"weird art but a chuffin’ great shite."</p>
+                    </div>
+                    <div class="guestbook-entry">
+                        <div class="entry-header">
+                            <h3>Sazzy Mags</h3>
+                            <div class="entry-stars">
+                                <span class="star-filled">★</span><span class="star-filled">★</span><span class="star-filled">★</span><span class="star-filled">★</span><span class="star-filled">★</span>
                             </div>
-                            <p class="entry-comment">"thanks for having me guys!"</p>
                         </div>
-                        <div class="guestbook-entry">
-                            <div class="entry-header">
-                                <h3>Christoph</h3>
-                                <div class="entry-stars">
-                                    <span class="star-filled">★</span><span class="star-filled">★</span><span class="star-filled">★</span><span class="star-filled">★</span><span class="star-empty">☆</span>
-                                </div>
+                        <p class="entry-comment">"thanks for having me guys!"</p>
+                    </div>
+                    <div class="guestbook-entry">
+                        <div class="entry-header">
+                            <h3>Christoph</h3>
+                            <div class="entry-stars">
+                                <span class="star-filled">★</span><span class="star-filled">★</span><span class="star-filled">★</span><span class="star-filled">★</span><span class="star-empty">☆</span>
                             </div>
-                            <p class="entry-comment">"Changed the loo roll for you guys"</p>
                         </div>
-                        <div class="guestbook-entry">
-                            <div class="entry-header">
-                                <h3>Marianne</h3>
-                                <div class="entry-stars">
-                                    <span class="star-filled">★</span><span class="star-filled">★</span><span class="star-filled">★</span><span class="star-filled">★</span><span class="star-filled">★</span>
-                                </div>
+                        <p class="entry-comment">"Changed the loo roll for you guys"</p>
+                    </div>
+                    <div class="guestbook-entry">
+                        <div class="entry-header">
+                            <h3>Marianne</h3>
+                            <div class="entry-stars">
+                                <span class="star-filled">★</span><span class="star-filled">★</span><span class="star-filled">★</span><span class="star-filled">★</span><span class="star-filled">★</span>
                             </div>
-                            <p class="entry-comment">"had fun playing d&d with u"</p>
                         </div>
-                        <div class="guestbook-entry">
-                            <div class="entry-header">
-                                <h3>Tyler S</h3>
-                                <div class="entry-stars">
-                                    <span class="star-filled">★</span><span class="star-filled">★</span><span class="star-filled">★</span><span class="star-filled">★</span><span class="star-filled">★</span>
-                                </div>
+                        <p class="entry-comment">"had fun playing d&d with u"</p>
+                    </div>
+                    <div class="guestbook-entry">
+                        <div class="entry-header">
+                            <h3>Tyler S</h3>
+                            <div class="entry-stars">
+                                <span class="star-filled">★</span><span class="star-filled">★</span><span class="star-filled">★</span><span class="star-filled">★</span><span class="star-filled">★</span>
                             </div>
-                            <p class="entry-comment">"omg Malu send me your dip recipe, it's amazing"</p>
                         </div>
-                        <div class="guestbook-entry">
-                            <div class="entry-header">
-                                <h3>Louise</h3>
-                                <div class="entry-stars">
-                                    <span class="star-filled">★</span><span class="star-filled">★</span><span class="star-filled">★</span><span class="star-filled">★</span><span class="star-filled">★</span>
-                                </div>
+                        <p class="entry-comment">"omg Malu send me your dip recipe, it's amazing"</p>
+                    </div>
+                    <div class="guestbook-entry">
+                        <div class="entry-header">
+                            <h3>Louise</h3>
+                            <div class="entry-stars">
+                                <span class="star-filled">★</span><span class="star-filled">★</span><span class="star-filled">★</span><span class="star-filled">★</span><span class="star-filled">★</span>
                             </div>
-                            <p class="entry-comment">"Enjoy India soon <3"</p>
                         </div>
-                        <div class="guestbook-entry">
-                            <div class="entry-header">
-                                <h3>Luke</h3>
-                                <div class="entry-stars">
-                                    <span class="star-filled">★</span><span class="star-filled">★</span><span class="star-filled">★</span><span class="star-filled">★</span><span class="star-filled">★</span>
-                                </div>
+                        <p class="entry-comment">"Enjoy India soon <3"</p>
+                    </div>
+                    <div class="guestbook-entry">
+                        <div class="entry-header">
+                            <h3>Luke</h3>
+                            <div class="entry-stars">
+                                <span class="star-filled">★</span><span class="star-filled">★</span><span class="star-filled">★</span><span class="star-filled">★</span><span class="star-filled">★</span>
                             </div>
-                            <p class="entry-comment">"nice to see you both!"</p>
                         </div>
+                        <p class="entry-comment">"nice to see you both!"</p>
                     </div>
                 </div>
-            </section>
-            <section id="thanks">
-                <div class="container">
-                    <div class="feedback-image-container">
-                        <img src="https://i.ibb.co/hJ9Krs8j/IMG-0795.jpg" alt="A photo of the website's creator and his partner">
-                        <p class="caption" style="color: #1B4332;">thank you for using the facilities</p>
-                    </div>
+            </div>
+        </section>
+
+        <section id="thanks">
+            <div class="container">
+                <div class="feedback-image-container">
+                    <img src="https://i.ibb.co/hJ9Krs8j/IMG-0795.jpg" alt="A photo of the website's creator and his partner">
+                    <p class="caption">thank you for using the facilities</p>
                 </div>
-            </section>
+            </div>
+        </section>
     </main>
     
     <footer>
         <div class="container">
-            <p>In this matter, eight metre. DEPTH.</br><a href="https://youtu.be/frAEmhqdLFs">Click here</a> for a little nihilist relief.</p>
+            <p>In this matter, eight metre. DEPTH.<br><a href="https://youtu.be/frAEmhqdLFs">Click here</a> for a little nihilist relief.</p>
         </div>
     </footer>
 
@@ -726,12 +726,12 @@
                     }
                 });
             });
-            // Hook feedback link to populate Rick Astley details before redirecting
+
             const feedbackBtn = document.getElementById('submit-feedback');
 
             if (feedbackBtn) {
                 feedbackBtn.addEventListener('click', (e) => {
-                    e.preventDefault(); // Stop instant navigation so JS can run
+                    e.preventDefault();
         
                     const nameInput = document.getElementById('name');
                     const commentInput = document.getElementById('comment');
@@ -743,7 +743,6 @@
                     }
                     if (star5Input) star5Input.checked = true;
         
-                    // Open the link after a 150ms delay so the form updates first
                     const targetUrl = feedbackBtn.getAttribute('href');
                     setTimeout(() => {
                         window.open(targetUrl, '_blank');
@@ -751,61 +750,50 @@
                 });
             }
         });
-        // START: News item scroll animation
-            const newsCarousel = document.querySelector('#news .carousel-container');
-            const newsItems = document.querySelectorAll('#news .news-item');
 
-            // Check if the news carousel exists to prevent errors
-            if (newsCarousel && newsItems.length > 0) {
-                
-                // These options tell the observer to watch inside the carousel
-                const observerOptions = {
-                    root: newsCarousel,
-                    threshold: 0.6 // Trigger when 60% of an item is visible
-                };
+        const newsCarousel = document.querySelector('#news .carousel-container');
+        const newsItems = document.querySelectorAll('#news .news-item');
 
-                const observerCallback = (entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            // When an item scrolls into view, remove the class from all others
-                            newsItems.forEach(item => item.classList.remove('is-prominent'));
-                            // Then, add the class to the one in view
-                            entry.target.classList.add('is-prominent');
-                        }
-                    });
-                };
+        if (newsCarousel && newsItems.length > 0) {
+            const observerOptions = {
+                root: newsCarousel,
+                threshold: 0.6
+            };
 
-                // Create the observer
-                const observer = new IntersectionObserver(observerCallback, observerOptions);
+            const observerCallback = (entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        newsItems.forEach(item => item.classList.remove('is-prominent'));
+                        entry.target.classList.add('is-prominent');
+                    }
+                });
+            };
 
-                // Tell the observer to watch each news item
-                newsItems.forEach(item => observer.observe(item));
-                
-            }
-            // START: Gallery item scroll animation
-            const galleryCarousel = document.querySelector('#gallery .carousel-container');
-            const galleryItems = document.querySelectorAll('#gallery .gallery-item');
+            const observer = new IntersectionObserver(observerCallback, observerOptions);
+            newsItems.forEach(item => observer.observe(item));
+        }
 
-            if (galleryCarousel && galleryItems.length > 0) {
-                const galleryObserverOptions = {
-                    root: galleryCarousel,
-                    threshold: 0.6
-                };
+        const galleryCarousel = document.querySelector('#gallery .carousel-container');
+        const galleryItems = document.querySelectorAll('#gallery .gallery-item');
 
-                const galleryObserverCallback = (entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            galleryItems.forEach(item => item.classList.remove('is-prominent'));
-                            entry.target.classList.add('is-prominent');
-                        }
-                    });
-                };
+        if (galleryCarousel && galleryItems.length > 0) {
+            const galleryObserverOptions = {
+                root: galleryCarousel,
+                threshold: 0.6
+            };
 
-                const galleryObserver = new IntersectionObserver(galleryObserverCallback, galleryObserverOptions);
-                galleryItems.forEach(item => galleryObserver.observe(item));
-            }
-            // END: Gallery item scroll animation
-            // END: News item scroll animation
+            const galleryObserverCallback = (entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        galleryItems.forEach(item => item.classList.remove('is-prominent'));
+                        entry.target.classList.add('is-prominent');
+                    }
+                });
+            };
+
+            const galleryObserver = new IntersectionObserver(galleryObserverCallback, galleryObserverOptions);
+            galleryItems.forEach(item => galleryObserver.observe(item));
+        }
     </script>
 </body>
 </html>
